@@ -1,99 +1,353 @@
-# RAG-Based Organizational Knowledge Chatbot
+# 🤖 RAG-Based Organizational Knowledge Chatbot
 
-A retrieval-augmented generation (RAG) chatbot built with:
-- `FastAPI` backend in `backend/main.py`
-- `React` frontend in `frontend/src`
-- `Chroma` vector store for embeddings
-- `Groq` LLM integration via `langchain-groq`
+## Transforming Organizational Knowledge into Intelligent Conversations
 
-## Project structure
+A Retrieval-Augmented Generation (RAG) powered chatbot that enables users to interact with organizational documents through natural language conversations. Built using React, FastAPI, ChromaDB, LangChain, and Groq LLMs, the system retrieves relevant information from PDFs and CSVs and generates context-aware responses grounded in source documents.
 
-- `backend/main.py` — main API server for the chatbot
-- `frontend/src/App.jsx` — React UI for asking questions
-- `app.py` — experimental/agricultural RAG script; not used by the React frontend
-- `docs/` — source documents for retrieval
-- `chroma_db/` — local Chroma vector store persistence
+---
 
-## What was fixed
+## 🚀 Tech Stack
 
-- Backend now supports both PDF and CSV documents in `docs/`
-- Root script `app.py` was updated to avoid hard-coded API keys
-- Added a project-level `.gitignore`
-- Added environment example files and a structured README
-- Added `pandas` to `backend/requirements.txt`
+**React • Vite • FastAPI • ChromaDB • LangChain • Groq • Hugging Face**
 
-## Requirements
+---
 
-- Python 3.10+ (recommended)
-- Node.js 18+ and npm
-- A valid `GROQ_API_KEY`
+## 📖 Overview
 
-## Setup
+The RAG-Based Organizational Knowledge Chatbot is designed to help organizations unlock the value of their internal documents through AI-powered search and conversation.
 
-### Backend
+By combining semantic search, vector embeddings, and Large Language Models, the chatbot can retrieve relevant information from PDFs and CSV files and generate accurate, context-aware answers. The system reduces hallucinations by grounding responses in actual organizational knowledge stored within the document repository.
 
-1. Create a Python virtual environment:
+---
 
-```powershell
-python -m venv venv
-.\venv\Scripts\activate
-```
+## ✨ Core Features
 
-2. Install backend dependencies:
+### 📄 Multi-Document Knowledge Base
 
-```powershell
-pip install -r backend/requirements.txt
-```
+Supports ingestion and retrieval from PDF and CSV documents stored in the knowledge repository.
 
-3. Create a `.env` file in the repository root:
+### 🔍 Semantic Search Engine
+
+Uses vector embeddings and similarity search to retrieve the most relevant document chunks based on user queries.
+
+### 🤖 AI-Powered Response Generation
+
+Leverages Groq LLMs through LangChain to generate natural, context-aware responses.
+
+### 💬 Interactive Chat Interface
+
+Modern React-based chat UI with real-time conversations and response rendering.
+
+### 🧠 Retrieval-Augmented Generation (RAG)
+
+Combines document retrieval with LLM reasoning to improve answer accuracy and reduce hallucinations.
+
+### ⚡ FastAPI Backend Services
+
+High-performance REST API handling document retrieval, embeddings, and AI response generation.
+
+### 🔐 Secure Environment Configuration
+
+Uses environment variables to securely manage API keys and application settings.
+
+---
+
+## 🔄 Project Architecture & User Flow
+
+### Flow Walkthrough
+
+1. User enters a question through the React chat interface.
+2. Frontend sends the query to the FastAPI backend.
+3. Backend performs semantic similarity search on ChromaDB.
+4. Relevant document chunks are retrieved from the vector database.
+5. Retrieved context is passed to the Groq LLM.
+6. Groq generates a grounded response using retrieved knowledge.
+7. Response is returned and displayed in the chat interface.
 
 ```text
-GROQ_API_KEY=your_groq_api_key_here
+User Query
+    │
+    ▼
+React Frontend
+    │
+    ▼
+FastAPI Backend
+    │
+    ▼
+Document Retrieval
+(PDF / CSV)
+    │
+    ▼
+Embedding Search
+(ChromaDB)
+    │
+    ▼
+Relevant Context
+    │
+    ▼
+Groq LLM
+    │
+    ▼
+AI Response
+    │
+    ▼
+Frontend Display
 ```
+
+---
+
+## 🧠 The RAG Pipeline
+
+Rather than relying solely on LLM knowledge, the chatbot retrieves information directly from organizational documents before generating responses.
+
+### 📥 Document Loading
+
+* Loads PDF documents using PyPDFLoader.
+* Loads CSV files using LangChain document loaders.
+* Processes all files stored in the `docs/` directory.
+
+### ✂️ Text Chunking
+
+* Splits large documents into manageable chunks.
+* Uses RecursiveCharacterTextSplitter for efficient retrieval.
+
+### 🔢 Embedding Generation
+
+* Converts text chunks into dense vector embeddings.
+* Uses Hugging Face model:
+  `sentence-transformers/all-MiniLM-L6-v2`
+
+### 🗄️ ChromaDB Vector Store
+
+* Stores embeddings in a persistent local vector database.
+* Enables fast semantic similarity searches.
+
+### 🔎 Retrieval
+
+* Finds the most relevant document chunks for a given query.
+* Retrieves contextual information to support answer generation.
+
+### 🤖 Response Synthesis
+
+* Uses ChatGroq via LangChain.
+* Combines user query and retrieved context.
+* Generates grounded and context-aware responses.
+
+---
+
+## 🛠️ Tech Stack Breakdown
 
 ### Frontend
 
-1. Install frontend dependencies:
+* React 18
+* Vite
+* Axios
+* Modern Chat UI Components
 
-```powershell
+### Backend
+
+* FastAPI
+* Uvicorn
+* Pydantic
+* CORS Middleware
+
+### AI & Machine Learning
+
+* LangChain
+* LangChain Community
+* ChatGroq
+* Hugging Face Embeddings
+* Retrieval-Augmented Generation
+
+### Database & Storage
+
+* ChromaDB Vector Store
+* Local Document Repository
+* Persistent Embedding Storage
+
+---
+
+## 📁 Project Structure
+
+```text
+RAG_PROJECT/
+│
+├── .env.example
+├── .gitignore
+├── README.md
+├── app.py
+│
+├── backend/
+│   ├── main.py
+│   └── requirements.txt
+│
+├── chroma_db/
+│
+├── docs/
+│   ├── PDF Documents
+│   └── CSV Files
+│
+└── frontend/
+    ├── .env.example
+    ├── package.json
+    ├── vite.config.js
+    │
+    └── src/
+        ├── App.jsx
+        ├── main.jsx
+        ├── components/
+        │   ├── ChatBubble.jsx
+        │   └── TypingIndicator.jsx
+        └── styles/
+            └── app.css
+```
+
+---
+
+## 💻 Local Installation & Setup
+
+### Prerequisites
+
+* Python 3.10+
+* Node.js 18+
+* npm
+* Groq API Key
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/dhivya-shreetha-s/RAG-Based-Organizational-Knowledge-Chatbot-.git
+
+cd RAG-Based-Organizational-Knowledge-Chatbot-
+```
+
+### 2. Backend Setup
+
+```bash
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+pip install -r backend/requirements.txt
+```
+
+### 3. Frontend Setup
+
+```bash
 cd frontend
+
 npm install
 ```
 
-2. Create `frontend/.env`:
+---
 
-```text
+## 🔑 Environment Variables
+
+Create a root `.env` file:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+```
+
+Create `frontend/.env`:
+
+```env
 VITE_API_URL=http://localhost:8000
 ```
 
-## Running the app
+---
 
-### Start backend
+## ▶️ Running the Application
 
-From the repository root:
+### Start Backend
 
-```powershell
+```bash
 cd backend
+
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-### Start frontend
+### Start Frontend
 
-In a separate terminal:
-
-```powershell
+```bash
 cd frontend
+
 npm run dev
 ```
 
-Then open the Vite dev URL shown in your terminal.
+Open:
 
-## Notes
+```text
+http://localhost:5173
+```
 
-- `backend/main.py` loads PDFs and CSVs from the `docs/` folder.
-- If you want to use PDFs, place them inside `docs/`.
-- The root `app.py` file is an alternate script and is not required for the current frontend chatbot.
+---
 
-## GitHub deployment
+## ☁️ Deployment Guide
 
-This repository has been prepared for Git usage with a `.gitignore` and documentation. If you want to push to GitHub, configure the remote and push from this project root.
+### Backend Deployment
+
+* Render
+* Railway
+* Azure App Service
+* AWS EC2
+* Docker Containers
+
+### Frontend Deployment
+
+* Vercel
+* Netlify
+* Firebase Hosting
+
+### Production Notes
+
+* Configure GROQ_API_KEY as an environment variable.
+* Persist ChromaDB storage across deployments.
+* Configure CORS for frontend-backend communication.
+
+---
+
+## 📤 GitHub Push Instructions
+
+```bash
+git init
+
+git add .
+
+git commit -m "Initial commit: RAG-Based Organizational Knowledge Chatbot"
+
+git branch -M main
+
+git remote add origin https://github.com/dhivya-shreetha-s/RAG-Based-Organizational-Knowledge-Chatbot-.git
+
+git push -u origin main
+```
+
+---
+
+## 🚀 Future Enhancements
+
+* Document Upload Interface
+* Source Citation Support
+* Multi-user Authentication
+* Role-Based Access Control
+* DOCX, PPTX & TXT Support
+* Chat History Persistence
+* Cloud Vector Database Integration
+* Voice-Based Interaction
+
+---
+
+## 📝 Notes
+
+* `backend/main.py` contains the production FastAPI RAG API.
+* `frontend/src/App.jsx` powers the chat interface.
+* `chroma_db/` stores persistent vector embeddings.
+* `docs/` acts as the organizational knowledge repository.
+
+---
+
+## 💼 Why This Project Matters
+
+Organizations generate large amounts of information that often remain difficult to access. This project demonstrates how Retrieval-Augmented Generation can transform static documents into intelligent conversational knowledge systems, enabling faster information discovery, improved productivity, and AI-assisted decision-making.
