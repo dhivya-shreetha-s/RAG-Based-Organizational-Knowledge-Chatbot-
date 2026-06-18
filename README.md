@@ -65,34 +65,29 @@ Uses environment variables to securely manage API keys and application settings.
 7. Response is returned and displayed in the chat interface.
 
 ```text
-User Query
-    │
-    ▼
-React Frontend
-    │
-    ▼
-FastAPI Backend
-    │
-    ▼
-Document Retrieval
-(PDF / CSV)
-    │
-    ▼
-Embedding Search
-(ChromaDB)
-    │
-    ▼
-Relevant Context
-    │
-    ▼
-Groq LLM
-    │
-    ▼
-AI Response
-    │
-    ▼
-Frontend Display
+rag-chatbot/
+│
+├── backend/
+│   ├── main.py                 # FastAPI application
+│   ├── requirements.txt        # Backend dependencies
+│   └── chroma_db/              # Vector database storage
+│
+├── frontend/
+│   ├── src/
+│   │   ├── App.jsx             # Main React component
+│   │   └── components/         # UI components
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
+├── docs/                       # Source PDF & CSV documents
+│
+├── app.py                      # Experimental RAG script
+├── .env                        # Environment variables
+├── .gitignore
+└── README.md
 ```
+
 
 ---
 
