@@ -5,7 +5,6 @@
 A Retrieval-Augmented Generation (RAG) powered chatbot that enables users to interact with organizational documents through natural language conversations. Built using React, FastAPI, ChromaDB, LangChain, and Groq LLMs, the system retrieves relevant information from PDFs and CSVs and generates context-aware responses grounded in source documents.
 
 ---
-
 ## 🚀 Tech Stack
 
 **React • Vite • FastAPI • ChromaDB • LangChain • Groq • Hugging Face**
@@ -128,37 +127,8 @@ Rather than relying solely on LLM knowledge, the chatbot retrieves information d
 * Combines user query and retrieved context.
 * Generates grounded and context-aware responses.
 
----
 
-## 🛠️ Tech Stack Breakdown
 
-### Frontend
-
-* React 18
-* Vite
-* Axios
-* Modern Chat UI Components
-
-### Backend
-
-* FastAPI
-* Uvicorn
-* Pydantic
-* CORS Middleware
-
-### AI & Machine Learning
-
-* LangChain
-* LangChain Community
-* ChatGroq
-* Hugging Face Embeddings
-* Retrieval-Augmented Generation
-
-### Database & Storage
-
-* ChromaDB Vector Store
-* Local Document Repository
-* Persistent Embedding Storage
 
 ---
 
@@ -276,73 +246,3 @@ Open:
 ```text
 http://localhost:5173
 ```
-
----
-
-## ☁️ Deployment Guide
-
-### Backend Deployment
-
-* Render
-* Railway
-* Azure App Service
-* AWS EC2
-* Docker Containers
-
-### Frontend Deployment
-
-* Vercel
-* Netlify
-* Firebase Hosting
-
-### Production Notes
-
-* Configure GROQ_API_KEY as an environment variable.
-* Persist ChromaDB storage across deployments.
-* Configure CORS for frontend-backend communication.
-
----
-
-## 📤 GitHub Push Instructions
-
-```bash
-git init
-
-git add .
-
-git commit -m "Initial commit: RAG-Based Organizational Knowledge Chatbot"
-
-git branch -M main
-
-git remote add origin https://github.com/dhivya-shreetha-s/RAG-Based-Organizational-Knowledge-Chatbot-.git
-
-git push -u origin main
-```
-
----
-
-## 🚀 Future Enhancements
-
-* Document Upload Interface
-* Source Citation Support
-* Multi-user Authentication
-* Role-Based Access Control
-* DOCX, PPTX & TXT Support
-* Chat History Persistence
-* Cloud Vector Database Integration
-* Voice-Based Interaction
-
----
-
-## 📝 Notes
-
-* `backend/main.py` contains the production FastAPI RAG API.
-* `frontend/src/App.jsx` powers the chat interface.
-* `chroma_db/` stores persistent vector embeddings.
-* `docs/` acts as the organizational knowledge repository.
-
----
-
-## 💼 Why This Project Matters
-
-Organizations generate large amounts of information that often remain difficult to access. This project demonstrates how Retrieval-Augmented Generation can transform static documents into intelligent conversational knowledge systems, enabling faster information discovery, improved productivity, and AI-assisted decision-making.
